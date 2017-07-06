@@ -1,14 +1,18 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-
+Project("{4924B308-AB88-EA68-BF67-3FEA1B030D9E}") = "RP Codename - Aegis", "Assembly-CSharp.csproj", "{074072E5-63A0-F356-F1FA-468BC32D7D09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{074072E5-63A0-F356-F1FA-468BC32D7D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{074072E5-63A0-F356-F1FA-468BC32D7D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{074072E5-63A0-F356-F1FA-468BC32D7D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{074072E5-63A0-F356-F1FA-468BC32D7D09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
