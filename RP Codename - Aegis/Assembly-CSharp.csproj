@@ -46,7 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\C# Scripts\Creeps\Creep.cs" />
+     <Compile Include="Assets\C# Scripts\Map\Directions\TurnBarrier.cs" />
      <Compile Include="Assets\C# Scripts\Player\Wallet.cs" />
+     <Compile Include="Assets\C# Scripts\Towers\TurretAimingTargeting.cs" />
+     <Compile Include="Assets\C# Scripts\Towers\TurretFiring.cs" />
+     <Compile Include="Assets\C# Scripts\Towers\TurretScout.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5.5.0b11/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
