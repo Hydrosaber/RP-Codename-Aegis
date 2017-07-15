@@ -52,6 +52,7 @@
      <Compile Include="Assets\C# Scripts\Towers\TurretAimingTargeting.cs" />
      <Compile Include="Assets\C# Scripts\Towers\TurretFiring.cs" />
      <Compile Include="Assets\C# Scripts\Towers\TurretScout.cs" />
+     <Compile Include="Assets\C# Scripts\Towers\TurretShot.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5.5.0b11/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

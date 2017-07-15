@@ -9,6 +9,7 @@ public class TurretScout : MonoBehaviour {
 		enemies = new List<GameObject> ();
 	}
 	public GameObject GetFirst(){
+		enemies.RemoveAll (obj => obj == null);
 		if (enemies.Count == 0) {
 			return null;
 			//if has no enemies in range, returns null
@@ -16,7 +17,7 @@ public class TurretScout : MonoBehaviour {
 		return enemies [0];
 		//returns oldest enemy
 	}
-	void OnTriggerEnter2D(Collider2D coll){
+	void OnTriggerStay2D(Collider2D coll){
 		if(coll.gameObject.tag.Equals("Creep")){
 			if (enemies.Count == 0) {
 				enemies.Add (coll.gameObject);
@@ -28,7 +29,7 @@ public class TurretScout : MonoBehaviour {
 			}
 			for (int i = 0; i < enemies.Count; i++) {
 				Creep enemy = coll.gameObject.GetComponent<Creep> ();
-				if(enemy.getProgress()>enemies[i].GetComponent<Creep>().getProgress()){
+				if(enemy.GetProgress()>enemies[i].GetComponent<Creep>().GetProgress()){
 					enemies.Insert (i, coll.gameObject);
 					//insterts the target on the list in terms of how long has it existed on the map
 				}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurretFiring : MonoBehaviour {
 	[SerializeField]
-	private int cooldown;
+	private float cooldown;
 	private float timer;
 	[SerializeField]
 	private GameObject ammo;

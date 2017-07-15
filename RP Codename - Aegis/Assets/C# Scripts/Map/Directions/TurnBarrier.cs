@@ -11,7 +11,6 @@ public class TurnBarrier : MonoBehaviour {
 		rot *= Quaternion.Euler (0, 0, turnAngle);
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("collided");
 		if(other.gameObject.tag=="Creep"){
 			other.gameObject.GetComponent<Creep> ().Rotate (rot.eulerAngles.z+90);
 		}

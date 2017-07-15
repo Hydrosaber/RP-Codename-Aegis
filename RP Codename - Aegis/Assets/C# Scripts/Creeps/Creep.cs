@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Creep : MonoBehaviour {
+	[SerializeField]
+	private int healthMax;
+	private int health;
 	private float progress;
 	[SerializeField]
 	private int speedTier;
@@ -12,8 +16,16 @@ public class Creep : MonoBehaviour {
 	private float speedMultiplier;
 	[SerializeField]
 	private GameObject nextTier;
+	[SerializeField]
+	private Image healthBar;
+	[SerializeField]
+	private float z;
 	// Use this for initialization
 	void Start () {
+		health = healthMax;
+		if(z==0){
+			z = gameObject.transform.rotation.eulerAngles.z + 90f;
+		}
 		changeCooldown = -100f;
 		body = gameObject.GetComponent<Rigidbody2D> ();
 		progress = 0;
@@ -25,7 +37,7 @@ public class Creep : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		progress += Time.deltaTime;
+		progress += Time.deltaTime*speedTier;
 		if (changeCooldown > 0) {
 			changeCooldown -= Time.deltaTime;
 		} else if (changeCooldown > -100) {
@@ -33,16 +45,37 @@ public class Creep : MonoBehaviour {
 			changeCooldown = -100;
 		}
 	}
-	public float getProgress(){
+	public float GetProgress(){
 		return progress;
 	}
-	public void setProgress(float x){
+	public void SetProgress(float x){
 		progress = x;
 	}
-	public void damage(){
+	public void Damage(int dam){
+		health -= dam;
+		if (health <= 0) {
+			Death ();
+		}
+		healthBar.fillAmount = health / healthMax;
+	}
+	public void Damage(int dam, string type){
+		if(type=="Glue"){
+			UpdateSpeed (0.5f);
+		}
+		if(type=="Frozen"){
+			UpdateSpeed (0);
+		}
+		health -= dam;
+		if (health <= 0) {
+			Death ();
+		}
+		healthBar.fillAmount = (float)health / healthMax;
+	}
+	void Death(){
 		if (!(nextTier == null)) {
-			var kin = Instantiate (nextTier, transform.position, transform.rotation);
-			kin.GetComponent<Creep> ().setProgress (progress);
+			GameObject kin = Instantiate (nextTier, transform.position, transform.rotation);
+			kin.GetComponent<Creep> ().SetProgress (progress);
+			kin.GetComponent<Creep> ().Rotate (z);
 		}
 		Destroy (gameObject);
 	}
@@ -56,9 +89,13 @@ public class Creep : MonoBehaviour {
 		changeCooldown = 3.0f;
 	}
 	public void ResetSpeed(){
-		Rotate (gameObject.transform.rotation.eulerAngles.z+90);
+		speedMultiplier = 1;
+		Rotate (z);
 	}
 	public void Rotate(float angle){
+		if(body==null){
+			body = gameObject.GetComponent<Rigidbody2D> ();
+		}
 		float radians = angle * Mathf.PI / 180;
 		float x = Mathf.Cos (radians);
 		float y = Mathf.Sin (radians);
@@ -67,6 +104,6 @@ public class Creep : MonoBehaviour {
 		speedOrientation.x = x * multiplier;
 		speedOrientation.y = y * multiplier;
 		body.velocity = speedOrientation;
-		gameObject.transform.rotation = Quaternion.Euler (0, 0, angle-90);
+		z = angle;
 	}
 }
