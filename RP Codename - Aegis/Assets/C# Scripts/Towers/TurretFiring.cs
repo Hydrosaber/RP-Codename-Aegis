@@ -11,8 +11,8 @@ public class TurretFiring : MonoBehaviour {
 	private bool hasEnemy;
 	void Start () {
 		if (cooldown <= 0) {
-			cooldown = 20;
-			//fire cooldown default: 20 sec
+			cooldown = 5;
+			//fire cooldown default: 5 sec (because 20 is way to long)
 		}
 		timer = 0;
 		//so that it will fire once the enemy reaches in the range
@@ -37,10 +37,12 @@ public class TurretFiring : MonoBehaviour {
 		var tempShot = Instantiate (ammo, transform.position-(Vector3.back/2), transform.rotation);
 		tempShot.GetComponent<Rigidbody2D> ().velocity = tempShot.transform.up * 10;
 		//NetworkServer.Spawn (tempShot);
+		//for multiplayer later on
 		Destroy (tempShot, 1.0f);
 		//destroys the object to conserve space and processing
 	}
 	public void changeEnemy(bool hE){
 		hasEnemy = hE;
+		//so that the TurretAimingTargeting (dunnno why I named it like that) can control whether this fires or not
 	}
 }

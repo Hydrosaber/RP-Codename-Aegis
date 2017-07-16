@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Eriq Taing
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,13 +12,17 @@ public class Wallet : MonoBehaviour {
 		currentAmt = startMoney;
 	}
 	public int TakeMoney (int amount){
+		//for purchases
 		currentAmt -= amount;
 		return amount;
+		//for depositing money to allies
 	}
 	public void DepositMoney(int amount){
 		currentAmt += amount;
+		//donations
 	}
 	public void Restart(){
 		currentAmt = startMoney;
+		//when game over and restart
 	}
 }
