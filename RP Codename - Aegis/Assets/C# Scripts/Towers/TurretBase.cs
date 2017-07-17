@@ -3,14 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretAimingTargeting : MonoBehaviour {
+public class TurretBase : MonoBehaviour {
 	private int targetMethod;
 	[SerializeField]
-	private GameObject target;
-	[SerializeField]
-	private GameObject turretHead;
-	[SerializeField]
-	private GameObject range;
+	private GameObject target, turretHead, range;
 	// Use this for initialization
 	void Start () {
 		targetMethod = 0;

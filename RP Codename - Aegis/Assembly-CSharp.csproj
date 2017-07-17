@@ -48,9 +48,13 @@
   <ItemGroup>
      <Compile Include="Assets\C# Scripts\Creeps\Creep.cs" />
      <Compile Include="Assets\C# Scripts\Map\Directions\TurnBarrier.cs" />
-     <Compile Include="Assets\C# Scripts\Player\Wallet.cs" />
-     <Compile Include="Assets\C# Scripts\Towers\TurretAimingTargeting.cs" />
+     <Compile Include="Assets\C# Scripts\Player\GameMaster.cs" />
+     <Compile Include="Assets\C# Scripts\Player\Player.cs" />
+     <Compile Include="Assets\C# Scripts\Player\TowerPlacer.cs" />
+     <Compile Include="Assets\C# Scripts\Player\TowerPlacingIndicator.cs" />
+     <Compile Include="Assets\C# Scripts\Towers\TurretBase.cs" />
      <Compile Include="Assets\C# Scripts\Towers\TurretFiring.cs" />
+     <Compile Include="Assets\C# Scripts\Towers\TurretInfo.cs" />
      <Compile Include="Assets\C# Scripts\Towers\TurretScout.cs" />
      <Compile Include="Assets\C# Scripts\Towers\TurretShot.cs" />
  <Reference Include="UnityEngine.UI">
