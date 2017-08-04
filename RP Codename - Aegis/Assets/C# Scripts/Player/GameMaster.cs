@@ -1,28 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
-	private List<GameObject> players;
+	[SerializeField]
+	private GameObject playerUI;
 	private int localPlayer;
+	[SerializeField]
+	private GameObject start;
 	// Use this for initialization
 	void Start () {
-		players=new List<GameObject>();
+		
 	}
-
 	// Update is called once per frame
 	void Update () {
 		
 	}
-	public int AddPlayer(GameObject p){
-		players.Add (p);
-		return players.IndexOf (p);
+	public GameObject AddPlayer(GameObject p){
+		return playerUI.GetComponent<PlayerInfoUI> ().AddPlayer (p);
+	}
+	public void Profit(int amt){
+		playerUI.GetComponent<PlayerInfoUI>().Profit(amt);
 	}
 	public void SpawnTower(Transform p, GameObject t){
-		if (players[localPlayer].GetComponent<Player>().canSpend(t.GetComponentInChildren<TurretInfo>().getPrice())) {
-			players [localPlayer].GetComponent<Player> ().takeMoney (t.GetComponentInChildren<TurretInfo> ().getPrice ());
+		List<GameObject> players = playerUI.GetComponent<PlayerInfoUI>().GetPlayers();
+		if (players[localPlayer].GetComponent<Player>().CanSpend(t.GetComponentInChildren<TurretInfo>().getPrice())) {
+			players [localPlayer].GetComponent<Player> ().TakeMoney (t.GetComponentInChildren<TurretInfo> ().getPrice ());
 			GameObject tower = Instantiate (t, p.position, p.rotation);
 			players [localPlayer].GetComponent<Player> ().AddTurret (tower);
 		}
+	}
+	public void StartTestCreepWave(int choice){
+		start.GetComponent<CreepSpawner> ().NewWave(choice);
+	}
+	public void CreepDamage (int amt){
+		playerUI.GetComponent<PlayerInfoUI> ().CreepDamage (amt);
+	}
+	public void Death(){
+		
+	}
+	public void Restart(){
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 	}
 }

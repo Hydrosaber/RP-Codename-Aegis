@@ -47,7 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\C# Scripts\Creeps\Creep.cs" />
+     <Compile Include="Assets\C# Scripts\Creeps\CreepGroup.cs" />
+     <Compile Include="Assets\C# Scripts\Map\CreepSpawner.cs" />
      <Compile Include="Assets\C# Scripts\Map\Directions\TurnBarrier.cs" />
+     <Compile Include="Assets\C# Scripts\Map\Timer.cs" />
      <Compile Include="Assets\C# Scripts\Player\GameMaster.cs" />
      <Compile Include="Assets\C# Scripts\Player\Player.cs" />
      <Compile Include="Assets\C# Scripts\Player\TowerPlacer.cs" />
@@ -57,6 +60,9 @@
      <Compile Include="Assets\C# Scripts\Towers\TurretInfo.cs" />
      <Compile Include="Assets\C# Scripts\Towers\TurretScout.cs" />
      <Compile Include="Assets\C# Scripts\Towers\TurretShot.cs" />
+     <Compile Include="Assets\EndCastle.cs" />
+     <Compile Include="Assets\PlayerInfoBarManager.cs" />
+     <Compile Include="Assets\PlayerInfoUI.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5.5.0b11/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

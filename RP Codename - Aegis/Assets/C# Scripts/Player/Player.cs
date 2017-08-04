@@ -6,26 +6,32 @@ public class Player : MonoBehaviour {
 	private int amtMoney;
 	private List<GameObject> turrets;
 	private bool isLocalPlayer;
+	private GameObject UI;
 	[SerializeField]
 	private GameObject GM;
-	private int player;
 	void Start () {
 		amtMoney = 300;
 		turrets = new List<GameObject> ();
-		player = GM.GetComponent<GameMaster> ().AddPlayer(gameObject);
+		UI = GM.GetComponent<GameMaster> ().AddPlayer(gameObject);
 		//adding the player to a list for easier transactions
+		UpdateMoney ();
 	}
-	public int takeMoney(int amt){
+	public int TakeMoney(int amt){
 		amtMoney -= amt;
+		UpdateMoney();
 		return amt;
 	}
-	public void giveMoney(int amt){
+	public void GiveMoney(int amt){
 		amtMoney += amt;
+		UpdateMoney();
 	}
-	public bool canSpend(int amt){
+	public bool CanSpend(int amt){
 		return amtMoney - amt >= 0;
 	}
 	public void AddTurret(GameObject n){
 		turrets.Add (n);
+	}
+	private void UpdateMoney(){
+		UI.GetComponent<PlayerInfoBarManager> ().UpdateMoney (amtMoney);
 	}
 }

@@ -196,9 +196,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthMax: 2
+  damage: 0
   speedTier: 1
   nextTier: {fileID: 1709878362707432, guid: 9d6bdbf7a045dcf4c9520825ede694b7, type: 2}
-  healthBar: {fileID: 114121208073353584}
+  gameMaster: {fileID: 0}
+  healthBar: {fileID: 0}
+  z: 0
 --- !u!114 &114404097290599048
 MonoBehaviour:
   m_ObjectHideFlags: 1

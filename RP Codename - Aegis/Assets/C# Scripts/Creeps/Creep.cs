@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class Creep : MonoBehaviour {
 	[SerializeField]
-	private int healthMax;
+	private int healthMax, damage;
 	private int health;
 	//health, to determine death
+	[SerializeField]
 	private float progress;
 	//for targeting
 	[SerializeField]
-	private int speedTier;
+	private byte speedTier;
 	private Rigidbody2D body;
 	//for velocity to be applicated to the creep
 	private Vector2 speedOrientation;
@@ -21,7 +22,7 @@ public class Creep : MonoBehaviour {
 	private float speedMultiplier;
 	//for speed effects
 	[SerializeField]
-	private GameObject nextTier;
+	private GameObject nextTier, gameMaster;
 	//for default speed tier
 	[SerializeField]
 	private Image healthBar;
@@ -80,13 +81,23 @@ public class Creep : MonoBehaviour {
 		}
 		healthBar.fillAmount = (float)health / healthMax;
 	}
+	public int GetDamage(){
+		return damage;
+	}
 	void Death(){
 		if (!(nextTier == null)) {
 			GameObject kin = Instantiate (nextTier, transform.position, transform.rotation);
 			kin.GetComponent<Creep> ().SetProgress (progress);
 			kin.GetComponent<Creep> ().Rotate (z);
+			kin.GetComponent<Creep> ().SetGameMaster (gameMaster);
+			gameMaster.GetComponent<GameMaster> ().Profit (1);
+		} else {
+			gameMaster.GetComponent<GameMaster> ().Profit (damage);
 		}
 		Destroy (gameObject);
+	}
+	public void SetGameMaster(GameObject m){
+		gameMaster = m;
 	}
 	public void UpdateSpeed(float multiplier){
 		speedOrientation.x /= speedMultiplier;

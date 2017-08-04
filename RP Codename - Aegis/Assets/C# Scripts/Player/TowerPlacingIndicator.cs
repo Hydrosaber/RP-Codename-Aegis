@@ -11,13 +11,13 @@ public class TowerPlacingIndicator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		green = Color.green;
-		green.a = 30;
+		green.a = 0.2f;
 		red = Color.red;
-		red.a = 30;
+		red.a = 0.2f;
 		counter = 0;
 		isValid = false;
 		isGreen = true;
-		turretRange.GetComponent<SpriteRenderer> ().color = Color.green;
+		turretRange.GetComponent<SpriteRenderer> ().color = green;
 	}
 	// Update is called once per frame
 	void Update () {
@@ -34,11 +34,9 @@ public class TowerPlacingIndicator : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("collided");
 		counter++;
 	}
 	void OnTriggerExit2D(Collider2D other){
-		Debug.Log ("something cleared");
 		counter--;
 	}
 	public bool IsValid(){

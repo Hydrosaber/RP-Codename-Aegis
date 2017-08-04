@@ -233,8 +233,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthMax: 2
+  damage: 1
   speedTier: 1
   nextTier: {fileID: 0}
+  gameMaster: {fileID: 0}
   healthBar: {fileID: 114837358913858668}
   z: 0
 --- !u!212 &212177736371368528
